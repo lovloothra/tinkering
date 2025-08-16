@@ -9,6 +9,7 @@ const progressBar = document.getElementById('progress');
 const difficultyEl = document.getElementById('difficulty');
 const questionEl = document.getElementById('question');
 const optionsEl = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
 const nextBtn = document.getElementById('next');
 const resultEl = document.getElementById('result');
 const shareBtn = document.getElementById('share');
@@ -36,6 +37,8 @@ function showQuestion() {
     optionsEl.appendChild(btn);
   });
   nextBtn.classList.add('hidden');
+  feedbackEl.className = 'hidden';
+  feedbackEl.textContent = '';
 }
 
 function selectAnswer(idx) {
@@ -48,8 +51,12 @@ function selectAnswer(idx) {
   if (idx === q.correct_index) {
     correctCount++;
     results.push(true);
+    feedbackEl.textContent = 'Correct!';
+    feedbackEl.className = 'correct';
   } else {
     results.push(false);
+    feedbackEl.textContent = `Wrong! Correct answer: ${q.options[q.correct_index]}`;
+    feedbackEl.className = 'wrong';
   }
   correctCountEl.textContent = `${correctCount} correct`;
   nextBtn.classList.remove('hidden');
