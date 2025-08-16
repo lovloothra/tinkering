@@ -24,3 +24,15 @@ python rbi_quiz.py
 
 This prints a JSON array of ten questions that can be consumed by a
 front-end or another service.
+
+### Web Interface
+
+A minimal Flask app serves a simple Wordle-style UI for the quiz.
+
+```
+python app.py
+```
+
+Visit `http://localhost:8000` in your browser to play. After
+answering all ten questions you can copy a shareable emoji score that
+links back to the site.
