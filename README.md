@@ -4,7 +4,7 @@ Utilities for tinkering with AI and compliance-related experiments.
 
 ## RBI Circular Quiz
 
-`rbi_quiz.py` now contains a curated set of multiple-choice questions on topics from the Reserve Bank of India. A deterministic shuffle based on the current date selects a daily quiz for all players.
+`rbi_quiz.py` now generates a diversified bank of **5,000** arithmetic multiple-choice questions each day. A deterministic shuffle based on the current date selects a daily quiz for all players.
 
 ### Requirements
 
