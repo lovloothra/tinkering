@@ -1,10 +1,15 @@
 let questions = [];
 let current = 0;
+let correctCount = 0;
 let results = [];
 
-const questionContainer = document.getElementById('question-container');
+const qCountEl = document.getElementById('q-count');
+const correctCountEl = document.getElementById('correct-count');
+const progressBar = document.getElementById('progress');
+const difficultyEl = document.getElementById('difficulty');
 const questionEl = document.getElementById('question');
 const optionsEl = document.getElementById('options');
+const nextBtn = document.getElementById('next');
 const resultEl = document.getElementById('result');
 const shareBtn = document.getElementById('share');
 
@@ -17,40 +22,61 @@ fetch('/quiz')
 
 function showQuestion() {
   const q = questions[current];
+  qCountEl.textContent = `${current + 1}/${questions.length}`;
+  correctCountEl.textContent = `${correctCount} correct`;
+  progressBar.style.width = `${(current / questions.length) * 100}%`;
+  difficultyEl.textContent = q.difficulty;
   questionEl.textContent = q.question;
   optionsEl.innerHTML = '';
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.textContent = opt;
-    btn.addEventListener('click', () => handleAnswer(btn, idx === q.correct_index));
+    btn.className = 'option';
+    btn.onclick = () => selectAnswer(idx);
     optionsEl.appendChild(btn);
   });
-  questionContainer.classList.remove('hidden');
+  nextBtn.classList.add('hidden');
 }
 
-function handleAnswer(btn, correct) {
-  Array.from(optionsEl.children).forEach(b => b.disabled = true);
-  btn.classList.add(correct ? 'correct' : 'wrong');
-  results.push(correct);
-  setTimeout(() => {
-    current++;
-    if (current < questions.length) {
-      showQuestion();
-    } else {
-      showResult();
-    }
-  }, 800);
+function selectAnswer(idx) {
+  const q = questions[current];
+  Array.from(optionsEl.children).forEach((btn, bIdx) => {
+    btn.disabled = true;
+    if (bIdx === q.correct_index) btn.classList.add('correct');
+    if (bIdx === idx && bIdx !== q.correct_index) btn.classList.add('wrong');
+  });
+  if (idx === q.correct_index) {
+    correctCount++;
+    results.push(true);
+  } else {
+    results.push(false);
+  }
+  correctCountEl.textContent = `${correctCount} correct`;
+  nextBtn.classList.remove('hidden');
 }
+
+nextBtn.onclick = () => {
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+};
 
 function showResult() {
-  questionContainer.classList.add('hidden');
-  const score = results.filter(Boolean).length;
+  qCountEl.textContent = `${questions.length}/${questions.length}`;
+  progressBar.style.width = `100%`;
+  difficultyEl.classList.add('hidden');
+  questionEl.classList.add('hidden');
+  optionsEl.classList.add('hidden');
+  nextBtn.classList.add('hidden');
   const emoji = results.map(r => (r ? '🟩' : '🟥')).join('');
-  resultEl.textContent = `Score: ${score}/${results.length}\n${emoji}`;
+  resultEl.textContent = `Score: ${correctCount}/${questions.length}\n${emoji}`;
   resultEl.classList.remove('hidden');
   shareBtn.classList.remove('hidden');
   shareBtn.onclick = () => {
-    const shareText = `RBI Quiz ${score}/${results.length}\n${emoji}\n${window.location.href}`;
+    const shareText = `RBI Quiz Quest ${correctCount}/${questions.length}\n${emoji}\n${window.location.href}`;
     navigator.clipboard.writeText(shareText);
     shareBtn.textContent = 'Copied!';
     setTimeout(() => (shareBtn.textContent = 'Share'), 2000);

@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RBI Quiz</title>
+  <title>RBI Quiz Quest</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="game">
-    <h1>RBI Quiz</h1>
-    <div id="question-container" class="hidden">
+    <h1>RBI Quiz Quest</h1>
+    <div id="stats">
+      <div id="q-count">0/0</div>
+      <div id="correct-count">0 correct</div>
+    </div>
+    <div id="progress-bar"><div id="progress"></div></div>
+    <div id="difficulty"></div>
+    <div id="question-container">
       <div id="question"></div>
       <div id="options"></div>
     </div>
+    <button id="next" class="hidden">Next Question</button>
     <div id="result" class="hidden"></div>
     <button id="share" class="hidden">Share</button>
   </div>

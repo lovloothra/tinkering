@@ -4,11 +4,7 @@ Utilities for tinkering with AI and compliance-related experiments.
 
 ## RBI Circular Quiz
 
-`rbi_quiz.py` scrapes the Reserve Bank of India circular index and
-builds a daily multiple-choice quiz of ten questions. Each question asks
-for the issue date of a circular and includes four options. The quiz is
-seeded by the current date so all players see the same questions each
-day.
+`rbi_quiz.py` now contains a curated set of multiple-choice questions on topics from the Reserve Bank of India. A deterministic shuffle based on the current date selects a daily quiz for all players.
 
 ### Requirements
 
@@ -22,17 +18,14 @@ pip install -r requirements.txt
 python rbi_quiz.py
 ```
 
-This prints a JSON array of ten questions that can be consumed by a
-front-end or another service.
+This prints a JSON array of quiz questions that can be consumed by a front-end or another service.
 
 ### Web Interface
 
-A minimal Flask app serves a simple Wordle-style UI for the quiz.
+A minimal Flask app serves a simple quiz UI with progress tracking and shareable results.
 
 ```
 python app.py
 ```
 
-Visit `http://localhost:8000` in your browser to play. After
-answering all ten questions you can copy a shareable emoji score that
-links back to the site.
+Visit `http://localhost:8000` in your browser to play.
