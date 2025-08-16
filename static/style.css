@@ -66,16 +66,22 @@ body {
   cursor: default;
 }
 
+#options button:disabled:not(.correct):not(.wrong) {
+  background: #e0e0e0;
+  color: #666;
+  border-color: #e0e0e0;
+}
+
 button.correct {
-  background: #4caf50;
+  background: #2e7d32;
   color: #fff;
-  border-color: #4caf50;
+  border-color: #2e7d32;
 }
 
 button.wrong {
-  background: #f44336;
+  background: #c62828;
   color: #fff;
-  border-color: #f44336;
+  border-color: #c62828;
 }
 
 #next {
@@ -94,11 +100,11 @@ button.wrong {
 }
 
 #feedback.correct {
-  color: #4caf50;
+  color: #2e7d32;
 }
 
 #feedback.wrong {
-  color: #f44336;
+  color: #c62828;
 }
 
 .hidden {
