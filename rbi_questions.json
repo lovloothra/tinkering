@@ -1,0 +1,122 @@
+[
+  {
+    "id": "RBI1",
+    "question": "What does the Cash Reserve Ratio (CRR) require banks to do?",
+    "options": [
+      "Maintain a portion of deposits with RBI",
+      "Keep cash in ATMs",
+      "Invest in foreign bonds",
+      "Provide loans to NBFCs"
+    ],
+    "correct_index": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RBI2",
+    "question": "Which facility allows banks to park excess funds with RBI without collateral?",
+    "options": [
+      "Standing Deposit Facility",
+      "Marginal Standing Facility",
+      "Repo Facility",
+      "Open Market Operations"
+    ],
+    "correct_index": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RBI3",
+    "question": "What is the purpose of the Statutory Liquidity Ratio (SLR)?",
+    "options": [
+      "Ensure banks maintain liquid assets",
+      "Control foreign exchange",
+      "Set interest rates",
+      "Provide deposit insurance"
+    ],
+    "correct_index": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RBI4",
+    "question": "In Open Market Operations, which securities does RBI primarily trade?",
+    "options": [
+      "Government securities",
+      "Corporate bonds",
+      "Equities",
+      "Municipal bonds"
+    ],
+    "correct_index": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RBI5",
+    "question": "Which committee's recommendations led to the introduction of NEFT?",
+    "options": [
+      "Saraf Committee",
+      "Narasimham Committee",
+      "Tarapore Committee",
+      "Kelkar Committee"
+    ],
+    "correct_index": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RBI6",
+    "question": "What is the main objective of the Prompt Corrective Action (PCA) framework?",
+    "options": [
+      "Maintain the soundness of banks",
+      "Regulate stock exchanges",
+      "Control inflation",
+      "Manage foreign trade"
+    ],
+    "correct_index": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RBI7",
+    "question": "Which Act empowers RBI to regulate Non-Banking Financial Companies (NBFCs)?",
+    "options": [
+      "RBI Act 1934",
+      "Banking Regulation Act 1949",
+      "Companies Act 2013",
+      "SARFAESI Act 2002"
+    ],
+    "correct_index": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": "RBI8",
+    "question": "Which facility provides overnight liquidity to banks against government securities?",
+    "options": [
+      "Marginal Standing Facility",
+      "Standing Deposit Facility",
+      "Repo Facility",
+      "Cash Reserve Ratio"
+    ],
+    "correct_index": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RBI9",
+    "question": "What does LAF stand for in RBI’s monetary policy toolkit?",
+    "options": [
+      "Liquidity Adjustment Facility",
+      "Loan Administration Fund",
+      "Long-term Assistance Framework",
+      "Liquidity Allocation Fund"
+    ],
+    "correct_index": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RBI10",
+    "question": "Under the RBI guidelines, what is the purpose of priority sector lending?",
+    "options": [
+      "Ensure credit flow to vital sectors like agriculture",
+      "Finance luxury real estate",
+      "Support speculative trading",
+      "Increase banks' profits"
+    ],
+    "correct_index": 0,
+    "difficulty": "Easy"
+  }
+]
