@@ -2,6 +2,7 @@ import datetime
 import json
 import random
 from dataclasses import dataclass, asdict
+from pathlib import Path
 from typing import List
 
 
@@ -14,52 +15,15 @@ class Question:
     difficulty: str
 
 
-def generate_question_bank(num_questions: int = 5000) -> List[Question]:
-    """Generate a diversified bank of arithmetic questions.
+def load_question_bank(path: str = "rbi_questions.json") -> List[Question]:
+    """Load pre-generated RBI quiz questions from a JSON file."""
 
-    The random seed is initialised with today's date so a new set of questions
-    is produced each day while remaining deterministic for that day.
-    """
-
-    random.seed(datetime.date.today().isoformat())
-    bank: List[Question] = []
-    difficulties = ["Easy", "Medium", "Hard"]
-    operations = ["+", "-", "*", "/"]
-
-    for i in range(1, num_questions + 1):
-        op = random.choice(operations)
-        a = random.randint(1, 100)
-        b = random.randint(1, 100)
-        if op == "/":
-            # ensure divisible numbers for integer results
-            a = a * b
-        expression = f"{a} {op} {b}"
-        correct = eval(expression)
-
-        # create 3 unique incorrect options
-        options = [correct]
-        while len(options) < 4:
-            delta = random.randint(-10, 10)
-            option = correct + delta
-            if option not in options:
-                options.append(option)
-        random.shuffle(options)
-
-        difficulty = random.choice(difficulties)
-        bank.append(
-            Question(
-                id=f"Q{i}",
-                question=f"What is {expression}?",
-                options=[str(o) for o in options],
-                correct_index=options.index(correct),
-                difficulty=difficulty,
-            )
-        )
-
-    return bank
+    with open(Path(path), "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return [Question(**q) for q in data]
 
 
-QUESTIONS: List[Question] = generate_question_bank()
+QUESTIONS: List[Question] = load_question_bank()
 
 
 def generate_quiz(num_questions: int = 10) -> List[Question]:

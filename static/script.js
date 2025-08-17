@@ -33,7 +33,7 @@ function showQuestion() {
     const btn = document.createElement('button');
     btn.textContent = opt;
     btn.className = 'option';
-    btn.onclick = () => selectAnswer(idx);
+    btn.addEventListener('click', () => selectAnswer(idx, btn));
     optionsEl.appendChild(btn);
   });
   nextBtn.classList.add('hidden');
@@ -41,10 +41,11 @@ function showQuestion() {
   feedbackEl.textContent = '';
 }
 
-function selectAnswer(idx) {
+function selectAnswer(idx, clickedBtn) {
   const q = questions[current];
   Array.from(optionsEl.children).forEach((btn, bIdx) => {
     btn.disabled = true;
+    if (btn === clickedBtn) btn.classList.add('selected');
     if (bIdx === q.correct_index) btn.classList.add('correct');
     if (bIdx === idx && bIdx !== q.correct_index) btn.classList.add('wrong');
   });
